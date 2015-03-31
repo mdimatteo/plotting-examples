@@ -49,11 +49,23 @@ set(get(hcb, 'ylabel'), 'String', 'Column 1 Value');
 set(hcb, 'ytick', [0 1]);
 
 ylim([0 1]);
-set(gca, 'YTick', [0 1], 'XTick', [1 2 3 4]);
-set(gca, 'XTickLabel', {'Column 1', 'Column 2', 'Column 3', 'Column 4'});
-ylabel('Scaled Values');
-title('Parallel Coordinate Plot of Column Data');
+x = [1 2 3 4]
+Xt = 1:length(x)
+set(gca, 'YTick', []) %[0 1])
+%ylabel('Scaled Values');
 
+set(gca, 'XTick', Xt);
+set(gca, 'XTickLabel', {'Column 1', 'Column 2', 'Column 3', 'Column 4'});
+
+% Position minima, maxima, and attribute labels along the parallel axes
+min_lab = {'min1' 'min2' 'min3' 'min4'}
+max_lab = {'max1' 'max2' 'max3' 'max4'}
+attribute_lab = {'Column 1', 'Column 2', 'Column 3', 'Column 4'}
+parallel_coordinate_labels(x,Xt,min_lab,max_lab,attribute_lab)
+
+%2-line title
+title_str = 'Parallel Coordinate Plot of Column Data'
+title({title_str, ''}) 
 
 
 
